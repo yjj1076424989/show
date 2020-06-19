@@ -12,34 +12,34 @@ import java.util.*;
 public class Hotel {
  
     public static void main(String[] args) {
-        // ÉùÃ÷Connection¶ÔÏó
+        // å£°æ˜Connectionå¯¹è±¡
         Connection con;
-        // Çı¶¯³ÌĞòÃû
+        // é©±åŠ¨ç¨‹åºå
         String driver = "com.mysql.cj.jdbc.Driver";
-        // URLÖ¸ÏòÒª·ÃÎÊµÄÊı¾İ¿âÃû test
+        // URLæŒ‡å‘è¦è®¿é—®çš„æ•°æ®åº“å test
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
-        // MySQLÅäÖÃÊ±µÄÓÃ»§Ãû
+        // MySQLé…ç½®æ—¶çš„ç”¨æˆ·å
         String user = "root";
-        // MySQLÅäÖÃÊ±µÄÃÜÂë
+        // MySQLé…ç½®æ—¶çš„å¯†ç 
         String password = "123456";
-        // ±éÀú²éÑ¯½á¹û¼¯
+        // éå†æŸ¥è¯¢ç»“æœé›†
         try {
-            // ¼ÓÔØÇı¶¯³ÌĞò
+            // åŠ è½½é©±åŠ¨ç¨‹åº
             Class.forName(driver);
-            // 1.getConnection()·½·¨£¬Á¬½ÓMySQLÊı¾İ¿â£¡£¡
+            // 1.getConnection()æ–¹æ³•ï¼Œè¿æ¥MySQLæ•°æ®åº“ï¼ï¼
             con = DriverManager.getConnection(url, user, password);
             if (!con.isClosed())
-                System.out.println("\n\t\t»¶Ó­Ê¹ÓÃ¾Æµê¹ÜÀíÏµÍ³£¡£¡£¡");
+                System.out.println("\n\t\tæ¬¢è¿ä½¿ç”¨é…’åº—ç®¡ç†ç³»ç»Ÿï¼ï¼ï¼");
  
-            // 2.´´½¨statementÀà¶ÔÏó£¬ÓÃÀ´Ö´ĞĞSQLÓï¾ä£¡£¡
+            // 2.åˆ›å»ºstatementç±»å¯¹è±¡ï¼Œç”¨æ¥æ‰§è¡ŒSQLè¯­å¥ï¼ï¼
             Statement statement = con.createStatement();
-            // ÒªÖ´ĞĞµÄSQLÓï¾ä
+            // è¦æ‰§è¡Œçš„SQLè¯­å¥
             String sql = "select * from hotel1";
-            // 3.ResultSetÀà£¬ÓÃÀ´´æ·Å»ñÈ¡µÄ½á¹û¼¯£¡£¡
+            // 3.ResultSetç±»ï¼Œç”¨æ¥å­˜æ”¾è·å–çš„ç»“æœé›†ï¼ï¼
             ResultSet rs = statement.executeQuery(sql);
-            System.out.println("\n\t\tÄ¿Ç°¾Æµê·¿¼ä×´Ì¬ÈçÏÂËùÊ¾:");
+            System.out.println("\n\t\tç›®å‰é…’åº—æˆ¿é—´çŠ¶æ€å¦‚ä¸‹æ‰€ç¤º:");
             System.out.println("\t\t-----------------------------------------------------------------");
-            System.out.println("\t|\t" +"\t"+ "·¿¼äºÅ" + "\t"+"Èë×¡×´Ì¬" +"\t"+ "¿Í»§ĞÕÃû" + "\t\t" + "µç»°" + "\t" );
+            System.out.println("\t|\t" +"\t"+ "æˆ¿é—´å·" + "\t"+"å…¥ä½çŠ¶æ€" +"\t"+ "å®¢æˆ·å§“å" + "\t\t" + "ç”µè¯" + "\t" );
             System.out.println("\t\t-----------------------------------------------------------------");
  
             int ID = 0;
@@ -49,17 +49,17 @@ public class Hotel {
             
  
             while (rs.next()) {
-                // »ñÈ¡ ID ÕâÁĞÊı¾İ
+                // è·å– id è¿™åˆ—æ•°æ®
                 ID = rs.getInt("id");
-                // »ñÈ¡ Name ÕâÁĞÊı¾İ
+                // è·å– state è¿™åˆ—æ•°æ®
                 state = rs.getString("state");
-                // »ñÈ¡ Sex ÕâÁĞÊı¾İ
+                // è·å– usename è¿™åˆ—æ•°æ®
                 name = rs.getString("username");
-                // »ñÈ¡ Age ÕâÁĞÊı¾İ
+                // è·å– number è¿™åˆ—æ•°æ®
                 number = rs.getInt("phonenumber");
-                // »ñÈ¡ Phone ÕâÁĞÊı¾İ
+                
 
-                // Êä³ö½á¹û
+                // è¾“å‡ºç»“æœ
                 System.out.println("\t\t|\t" + ID + "\t" + state + "\t" + name + "\t\t" + number  + "\t|\t\t");
             }
             System.out.println("\t\t-----------------------------------------------------------------");
@@ -67,12 +67,12 @@ public class Hotel {
             con.close();
         }
         catch (ClassNotFoundException e) {
-            // Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
+            // æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
             System.out.println("Sorry,can`t find the Driver!");
             e.printStackTrace();
         }
         catch (SQLException e) {
-            // Êı¾İ¿âÁ¬½ÓÊ§°ÜÒì³£´¦Àí
+            // æ•°æ®åº“è¿æ¥å¤±è´¥å¼‚å¸¸å¤„ç†
             e.printStackTrace();
         }
         catch (Exception e) {
@@ -80,64 +80,64 @@ public class Hotel {
             e.printStackTrace();
         }
         finally {
-            System.out.println("\t\t\t\t\t\t\t\t¾Æµê·¿¼ä×´Ì¬²éÑ¯Íê±Ï£¡!£¡");
+            System.out.println("\t\t\t\t\t\t\t\té…’åº—æˆ¿é—´çŠ¶æ€æŸ¥è¯¢å®Œæ¯•ï¼!ï¼");
         }
         
         
         
         for(int i=1;i>0;i++) {
         	Scanner reader = new Scanner(System.in);
-            System.out.println("¶©·¿Çë°´1£¬ÍË·¿Çë°´2£¬²éÑ¯¾Æµê·¿¼ä×´Ì¬Çë°´3£¬ÍË³öÇë°´0");
+            System.out.println("è®¢æˆ¿è¯·æŒ‰1ï¼Œé€€æˆ¿è¯·æŒ‰2ï¼ŒæŸ¥è¯¢é…’åº—æˆ¿é—´çŠ¶æ€è¯·æŒ‰3ï¼Œé€€å‡ºè¯·æŒ‰0");
             int choice=reader.nextInt();
         	if(choice==1) {
-            	// ÉùÃ÷Connection¶ÔÏó
+            	// å£°æ˜Connectionå¯¹è±¡
                 Connection con1;
-                // Çı¶¯³ÌĞòÃû
+                // é©±åŠ¨ç¨‹åºå
                 String driver1 = "com.mysql.cj.jdbc.Driver";
-                // URLÖ¸ÏòÒª·ÃÎÊµÄÊı¾İ¿âÃû test
+                // URLæŒ‡å‘è¦è®¿é—®çš„æ•°æ®åº“å test
                 String url1 = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
-                // MySQLÅäÖÃÊ±µÄÓÃ»§Ãû
+                // MySQLé…ç½®æ—¶çš„ç”¨æˆ·å
                 String user1 = "root";
-                // MySQLÅäÖÃÊ±µÄÃÜÂë
+                // MySQLé…ç½®æ—¶çš„å¯†ç 
                 String password1 = "123456";
-                // ±éÀú²éÑ¯½á¹û¼¯
+                // éå†æŸ¥è¯¢ç»“æœé›†
             	try {
             		Scanner ID = new Scanner(System.in);
-                	System.out.println("ÇëÊäÈë·¿¼äºÅ");
+                	System.out.println("è¯·è¾“å…¥æˆ¿é—´å·");
                 	int id=ID.nextInt();
                 	Scanner STATE = new Scanner(System.in);
-                	System.out.println("ÇëÊäÈë·¿¼ä×´Ì¬");
+                	System.out.println("è¯·è¾“å…¥æˆ¿é—´çŠ¶æ€");
                 	String state=STATE.next();
                 	Scanner NAME = new Scanner(System.in);
-                	System.out.println("ÇëÊäÈë¿Í»§ĞÕÃû");
+                	System.out.println("è¯·è¾“å…¥å®¢æˆ·å§“å");
                 	String name=NAME.next();
                 	Scanner NUMBER = new Scanner(System.in);
-                	System.out.println("ÇëÊäÈëµç»°");
+                	System.out.println("è¯·è¾“å…¥ç”µè¯");
                 	int number=NUMBER.nextInt();
-                    // ¼ÓÔØÇı¶¯³ÌĞò
+                    // åŠ è½½é©±åŠ¨ç¨‹åº
                     Class.forName(driver1);
-                    // 1.getConnection()·½·¨£¬Á¬½ÓMySQLÊı¾İ¿â£¡£¡
+                    // 1.getConnection()æ–¹æ³•ï¼Œè¿æ¥MySQLæ•°æ®åº“ï¼ï¼
                     con1 = DriverManager.getConnection(url1, user1, password1);
                     if (!con1.isClosed())
-                        System.out.println("\n\t\tÕıÔÚÂ¼Èë£¬ÇëÉÔºó¡£¡£¡£");
+                        System.out.println("\n\t\tæ­£åœ¨å½•å…¥ï¼Œè¯·ç¨åã€‚ã€‚ã€‚");
          
-                    // 2.´´½¨statementÀà¶ÔÏó£¬ÓÃÀ´Ö´ĞĞSQLÓï¾ä£¡£¡
+                    // 2.åˆ›å»ºstatementç±»å¯¹è±¡ï¼Œç”¨æ¥æ‰§è¡ŒSQLè¯­å¥ï¼ï¼
                     Statement statement = con1.createStatement();
-                    // ÒªÖ´ĞĞµÄSQLÓï¾ä
+                    // è¦æ‰§è¡Œçš„SQLè¯­å¥
                     String sql = "update hotel1 set state='"+state+"',username='"+name+"',phonenumber="+number+" where id="+id;
-                    // 3.ResultSetÀà£¬ÓÃÀ´´æ·Å»ñÈ¡µÄ½á¹û¼¯£¡£¡
+                    
 
-                    statement.execute(sql) ;          // Ö´ĞĞÊı¾İ¿â¸üĞÂ²Ù×÷
-                    statement.close() ;                               // ¹Ø±Õ²Ù×÷ 
+                    statement.execute(sql) ;          
+                    statement.close() ;                               // å…³é—­æ“ä½œ 
                     con1.close();
                 }
                 catch (ClassNotFoundException e) {
-                    // Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
+                    // æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
                     System.out.println("Sorry,can`t find the Driver!");
                     e.printStackTrace();
                 }
                 catch (SQLException e) {
-                    // Êı¾İ¿âÁ¬½ÓÊ§°ÜÒì³£´¦Àí
+                    // æ•°æ®åº“è¿æ¥å¤±è´¥å¼‚å¸¸å¤„ç†
                     e.printStackTrace();
                 }
                 catch (Exception e) {
@@ -145,38 +145,38 @@ public class Hotel {
                     e.printStackTrace();
                 }
                 finally {
-                    System.out.println("\t\t\t\t\t\t\t\t¾Æµê·¿¼ä×´Ì¬ĞŞ¸Ä±Ï£¡!£¡");
+                    System.out.println("\t\t\t\t\t\t\t\té…’åº—æˆ¿é—´çŠ¶æ€ä¿®æ”¹æ¯•ï¼!ï¼");
                 }
             	
             }
             else if(choice==2) {
             	try {
                 	Scanner Id = new Scanner(System.in);
-                	System.out.println("ÇëÊäÈëÍË·¿·¿¼äºÅ");
+                	System.out.println("è¯·è¾“å…¥é€€æˆ¿æˆ¿é—´å·");
                 	int id=Id.nextInt();
-                    // ¼ÓÔØÇı¶¯³ÌĞò
+                    // åŠ è½½é©±åŠ¨ç¨‹åº
                     Class.forName(driver);
-                    // 1.getConnection()·½·¨£¬Á¬½ÓMySQLÊı¾İ¿â£¡£¡
+                    // 1.getConnection()æ–¹æ³•ï¼Œè¿æ¥MySQLæ•°æ®åº“ï¼ï¼
                     con = DriverManager.getConnection(url, user, password);
                     if (!con.isClosed())
-                        System.out.println("\n\t\tÕıÔÚÂ¼Èë£¬ÇëÉÔºó¡£¡£¡£");
+                        System.out.println("\n\t\tæ­£åœ¨å½•å…¥ï¼Œè¯·ç¨åã€‚ã€‚ã€‚");
          
-                    // 2.´´½¨statementÀà¶ÔÏó£¬ÓÃÀ´Ö´ĞĞSQLÓï¾ä£¡£¡
+                    // 2.åˆ›å»ºstatementç±»å¯¹è±¡ï¼Œç”¨æ¥æ‰§è¡ŒSQLè¯­å¥ï¼ï¼
                     Statement statement = con.createStatement();
-                    // ÒªÖ´ĞĞµÄSQLÓï¾ä
+                    // è¦æ‰§è¡Œçš„SQLè¯­å¥
                     String sql = "update hotel1 set state='nobody',username=null,phonenumber=0 where id ="+id;
-                    // 3.ResultSetÀà£¬ÓÃÀ´´æ·Å»ñÈ¡µÄ½á¹û¼¯£¡£¡
-                    statement.executeUpdate(sql) ;          // Ö´ĞĞÊı¾İ¿â¸üĞÂ²Ù×÷
-                    statement.close() ;                               // ¹Ø±Õ²Ù×÷ 
+                   
+                    statement.executeUpdate(sql) ;          
+                    statement.close() ;                               // å…³é—­æ“ä½œ 
                     con.close();
                 }
                 catch (ClassNotFoundException e) {
-                    // Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
+                    // æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
                     System.out.println("Sorry,can`t find the Driver!");
                     e.printStackTrace();
                 }
                 catch (SQLException e) {
-                    // Êı¾İ¿âÁ¬½ÓÊ§°ÜÒì³£´¦Àí
+                    // æ•°æ®åº“è¿æ¥å¤±è´¥å¼‚å¸¸å¤„ç†
                     e.printStackTrace();
                 }
                 catch (Exception e) {
@@ -184,37 +184,37 @@ public class Hotel {
                     e.printStackTrace();
                 }
                 finally {
-                    System.out.println("\t\t\t\t\t\t\t\t¾Æµê·¿¼ä×´Ì¬ĞŞ¸Ä±Ï£¡!£¡");
+                    System.out.println("\t\t\t\t\t\t\t\té…’åº—æˆ¿é—´çŠ¶æ€ä¿®æ”¹æ¯•ï¼!ï¼");
                 }
             }
             else if(choice==3) {
             	Connection con3;
-                // Çı¶¯³ÌĞòÃû
+                // é©±åŠ¨ç¨‹åºå
                 String driver3 = "com.mysql.cj.jdbc.Driver";
-                // URLÖ¸ÏòÒª·ÃÎÊµÄÊı¾İ¿âÃû test
+                // URLæŒ‡å‘è¦è®¿é—®çš„æ•°æ®åº“å test
                 String url3 = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
-                // MySQLÅäÖÃÊ±µÄÓÃ»§Ãû
+                // MySQLé…ç½®æ—¶çš„ç”¨æˆ·å
                 String user3 = "root";
-                // MySQLÅäÖÃÊ±µÄÃÜÂë
+                // MySQLé…ç½®æ—¶çš„å¯†ç 
                 String password3 = "123456";
-                // ±éÀú²éÑ¯½á¹û¼¯
+                // éå†æŸ¥è¯¢ç»“æœé›†
                 try {
-                    // ¼ÓÔØÇı¶¯³ÌĞò
+                    // åŠ è½½é©±åŠ¨ç¨‹åº
                     Class.forName(driver);
-                    // 1.getConnection()·½·¨£¬Á¬½ÓMySQLÊı¾İ¿â£¡£¡
+                    // 1.getConnection()æ–¹æ³•ï¼Œè¿æ¥MySQLæ•°æ®åº“ï¼ï¼
                     con = DriverManager.getConnection(url, user, password);
                     if (!con.isClosed())
-                        System.out.println("\n\t\t»¶Ó­Ê¹ÓÃ¾Æµê¹ÜÀíÏµÍ³£¡£¡£¡");
+                        System.out.println("\n\t\tæ¬¢è¿ä½¿ç”¨é…’åº—ç®¡ç†ç³»ç»Ÿï¼ï¼ï¼");
          
-                    // 2.´´½¨statementÀà¶ÔÏó£¬ÓÃÀ´Ö´ĞĞSQLÓï¾ä£¡£¡
+                    // 2.åˆ›å»ºstatementç±»å¯¹è±¡ï¼Œç”¨æ¥æ‰§è¡ŒSQLè¯­å¥ï¼ï¼
                     Statement statement = con.createStatement();
-                    // ÒªÖ´ĞĞµÄSQLÓï¾ä
+                    // è¦æ‰§è¡Œçš„SQLè¯­å¥
                     String sql = "select * from hotel1";
-                    // 3.ResultSetÀà£¬ÓÃÀ´´æ·Å»ñÈ¡µÄ½á¹û¼¯£¡£¡
+                    // 3.ResultSetç±»ï¼Œç”¨æ¥å­˜æ”¾è·å–çš„ç»“æœé›†ï¼ï¼
                     ResultSet rs = statement.executeQuery(sql);
-                    System.out.println("\n\t\tÄ¿Ç°¾Æµê·¿¼ä×´Ì¬ÈçÏÂËùÊ¾:");
+                    System.out.println("\n\t\tç›®å‰é…’åº—æˆ¿é—´çŠ¶æ€å¦‚ä¸‹æ‰€ç¤º:");
                     System.out.println("\t\t-----------------------------------------------------------------");
-                    System.out.println("\t|\t" +"\t"+ "·¿¼äºÅ" + "\t"+"Èë×¡×´Ì¬" +"\t"+ "¿Í»§ĞÕÃû" + "\t\t" + "µç»°" + "\t" );
+                    System.out.println("\t|\t" +"\t"+ "æˆ¿é—´å·" + "\t"+"å…¥ä½çŠ¶æ€" +"\t"+ "å®¢æˆ·å§“å" + "\t\t" + "ç”µè¯" + "\t" );
                     System.out.println("\t\t-----------------------------------------------------------------");
          
                     int ID = 0;
@@ -224,17 +224,17 @@ public class Hotel {
                     
          
                     while (rs.next()) {
-                        // »ñÈ¡ ID ÕâÁĞÊı¾İ
+                        // è·å– id è¿™åˆ—æ•°æ®
                         ID = rs.getInt("id");
-                        // »ñÈ¡ Name ÕâÁĞÊı¾İ
+                        // è·å– state è¿™åˆ—æ•°æ®
                         state = rs.getString("state");
-                        // »ñÈ¡ Sex ÕâÁĞÊı¾İ
+                        // è·å– username è¿™åˆ—æ•°æ®
                         name = rs.getString("username");
-                        // »ñÈ¡ Age ÕâÁĞÊı¾İ
+                        // è·å– number è¿™åˆ—æ•°æ®
                         number = rs.getInt("phonenumber");
-                        // »ñÈ¡ Phone ÕâÁĞÊı¾İ
+                        // è·å– Phone è¿™åˆ—æ•°æ®
 
-                        // Êä³ö½á¹û
+                        // è¾“å‡ºç»“æœ
                         System.out.println("\t\t|\t" + ID + "\t" + state + "\t" + name + "\t\t" + number  + "\t|\t\t");
                     }
                     System.out.println("\t\t-----------------------------------------------------------------");
@@ -242,12 +242,12 @@ public class Hotel {
                     con.close();
                 }
                 catch (ClassNotFoundException e) {
-                    // Êı¾İ¿âÇı¶¯ÀàÒì³£´¦Àí
+                    // æ•°æ®åº“é©±åŠ¨ç±»å¼‚å¸¸å¤„ç†
                     System.out.println("Sorry,can`t find the Driver!");
                     e.printStackTrace();
                 }
                 catch (SQLException e) {
-                    // Êı¾İ¿âÁ¬½ÓÊ§°ÜÒì³£´¦Àí
+                    // æ•°æ®åº“è¿æ¥å¤±è´¥å¼‚å¸¸å¤„ç†
                     e.printStackTrace();
                 }
                 catch (Exception e) {
@@ -255,17 +255,17 @@ public class Hotel {
                     e.printStackTrace();
                 }
                 finally {
-                    System.out.println("\t\t\t\t\t\t\t\t¾Æµê·¿¼ä×´Ì¬²éÑ¯Íê±Ï£¡!£¡");
+                    System.out.println("\t\t\t\t\t\t\t\té…’åº—æˆ¿é—´çŠ¶æ€æŸ¥è¯¢å®Œæ¯•ï¼!ï¼");
                 }
                      
                      
             }
             else if(choice==0) {
-            	System.out.println("³É¹¦ÍË³öÏµÍ³");
+            	System.out.println("æˆåŠŸé€€å‡ºç³»ç»Ÿ");
             	break;
             }
             else {
-            	System.out.println("ÊäÈë´íÎó£¬ÇëÖØĞÂ½øÈëÏµÍ³½øĞĞ²Ù×÷");
+            	System.out.println("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¿›å…¥ç³»ç»Ÿè¿›è¡Œæ“ä½œ");
             }
         }
 
